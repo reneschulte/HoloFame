@@ -10,7 +10,7 @@ Material:
   m_Shader: {fileID: 10706, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -87,7 +87,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.72
+      second: 0.98
     - first:
         name: _GlossyReflections
       second: 1
@@ -105,7 +105,7 @@ Material:
       second: 0.02
     - first:
         name: _Shininess
-      second: 0.06
+      second: 1
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -124,7 +124,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.83823526, g: 0.83823526, b: 1, a: 1}
+      second: {r: 0.6811867, g: 0.97794116, b: 0, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
