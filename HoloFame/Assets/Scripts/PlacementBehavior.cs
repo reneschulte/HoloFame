@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.VR.WSA;
 using UnityEngine.VR.WSA.Input;
 
 public class PlacementBehavior : MonoBehaviour
@@ -40,6 +41,8 @@ public class PlacementBehavior : MonoBehaviour
 
     void Update()
     {
+        HolographicSettings.SetFocusPointForFrame(transform.position, -Camera.main.transform.forward);
+
         if (IsPlaced) return;
 
         var raycastHits = Physics.RaycastAll(Camera.transform.position, Camera.transform.forward);

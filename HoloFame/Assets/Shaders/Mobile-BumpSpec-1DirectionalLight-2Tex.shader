@@ -9,7 +9,7 @@
 
 Shader "Mobile/Bumped Specular (1 Directional Light) 2 Tex" {
 Properties {
-	_Shininess ("Shininess", Range (0.03, 30)) = 0.078125
+	_Shininess ("Shininess", Range (0.03, 10)) = 0.078125
 	_MainTex ("Base (RGB) Gloss (A)", 2D) = "white" {}
 	_BumpMap ("Normalmap", 2D) = "bump" {}
 	_Crossfade("Crossfade", Range(0, 1)) = 0.0
