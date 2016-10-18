@@ -212,6 +212,61 @@ Prefab:
       propertyPath: m_OcclusionMaterial
       value: 
       objectReference: {fileID: 15302, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 114000014057446712, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_VisualMaterial
+      value: 
+      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 114000014057446712, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_SurfaceParent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014057446712, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_HalfBoxExtents.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014057446712, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_HalfBoxExtents.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014057446712, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_HalfBoxExtents.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010883751018, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_HalfBoxExtents.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010883751018, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_HalfBoxExtents.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010883751018, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_HalfBoxExtents.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014057446712, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_LodType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010883751018, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_LodType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014057446712, guid: a0e8d4d9af5421347ba3e10c956be364,
+        type: 2}
+      propertyPath: m_CurrentRenderState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0e8d4d9af5421347ba3e10c956be364, type: 2}
   m_IsPrefabParent: 0
