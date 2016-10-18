@@ -4,16 +4,13 @@ using UnityEngine.Windows.Speech;
 
 public class SpeechHandler : MonoBehaviour
 {
-    public string HidePlaneCmd = "hide plane";
-    public GameObject Plane;
-
     public string ResetSceneCmd = "reset scene";
 
     private KeywordRecognizer _keywordRecognizer;
 
     void Start()
     {
-        _keywordRecognizer = new KeywordRecognizer(new[] { HidePlaneCmd, ResetSceneCmd });
+        _keywordRecognizer = new KeywordRecognizer(new[] { ResetSceneCmd });
         _keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         _keywordRecognizer.Start();
     }
@@ -21,11 +18,7 @@ public class SpeechHandler : MonoBehaviour
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         var cmd = args.text;
-        if (cmd == HidePlaneCmd)
-        {
-            Plane.SetActive(false);
-        }
-        else if (cmd == ResetSceneCmd)
+        if (cmd == ResetSceneCmd)
         {
             SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
         }
