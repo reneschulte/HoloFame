@@ -23,11 +23,13 @@ public class HandImprintBehavior : MonoBehaviour
             {
                 if (_collider.bounds.Contains(handPos))
                 {
-                    // How far has the hand travelled into the object (naïve calculation with abosulute values)
-                    var dp = Mathf.Abs(handPos.y - _collider.bounds.max.y);
-                    var t = dp / _collider.bounds.extents.y;
+                    // How far has the hand travelled into the object
+                    var halfHeight = _collider.bounds.extents.y;
+                    var centerTop = _collider.bounds.center + transform.up * halfHeight;
+                    var handDist = Vector3.Project(handPos - centerTop, transform.up);
+                    var t = handDist.magnitude / halfHeight;
 
-                    // Makee sure it is in the right range [0; 1]
+                    // Make sure it is in the right range [0; 1]
                     if (t >= 0 && t <= 1)
                     {
                         // Apply Skinned mesh blending / morphing
