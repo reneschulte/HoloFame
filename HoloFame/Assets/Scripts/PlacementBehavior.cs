@@ -1,7 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.VR.WSA;
 using UnityEngine.VR.WSA.Input;
 
 public class PlacementBehavior : MonoBehaviour
@@ -23,6 +21,24 @@ public class PlacementBehavior : MonoBehaviour
         _gestureRecognizer.StartCapturingGestures();
     }
 
+    private void GestureRecognizerOnTappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
+    {
+        IsPlaced = !IsPlaced;
+    }
+
+    void Update()
+    {
+        if (IsPlaced) return;
+
+        var raycastHits = Physics.RaycastAll(Camera.transform.position, Camera.transform.forward);
+        var firstHit = raycastHits.Where(r => r.transform != transform).OrderBy(r => r.distance).FirstOrDefault();
+
+        transform.position = firstHit.point;
+        transform.up = firstHit.normal;
+    }
+
+
+
     private void GestureRecognizerOnNavigationStartedEvent(InteractionSourceKind source, Vector3 normalizedOffset, Ray headRay)
     {
         _previousOffset = normalizedOffset;
@@ -32,24 +48,6 @@ public class PlacementBehavior : MonoBehaviour
     {
         transform.localPosition += (normalizedOffset - _previousOffset);
         _previousOffset = normalizedOffset;
-    }
-
-    private void GestureRecognizerOnTappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
-    {
-        IsPlaced = !IsPlaced;
-    }
-
-    void Update()
-    {
-        HolographicSettings.SetFocusPointForFrame(transform.position, -Camera.main.transform.forward);
-
-        if (IsPlaced) return;
-
-        var raycastHits = Physics.RaycastAll(Camera.transform.position, Camera.transform.forward);
-        var firstHit = raycastHits.Where(r => r.transform != transform).OrderBy(r => r.distance).FirstOrDefault();
-
-        transform.position = firstHit.point;
-        transform.up = firstHit.normal;
     }
 
     void Reset()

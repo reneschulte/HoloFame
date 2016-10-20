@@ -35,11 +35,16 @@ public class HandImprintBehavior : MonoBehaviour
                         // Apply Skinned mesh blending / morphing
                         var blendWeight = Mathf.Lerp(0, BlendShapeTargetWeight, t);
                         BlendShapeRenderer.SetBlendShapeWeight(0, blendWeight);
-                        BlendShapeRenderer.material.SetFloat("_Crossfade", t);
+                        BlendShapeRenderer.material.SetFloat("_Crossfade", t); // Better use cached Shader property ID
                     }
                 }
             }
         }
+    }
+
+    void Reset()
+    {
+        BlendShapeRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void OnDestroy()
