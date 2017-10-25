@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.VR.WSA;
+
 
 public class DynamicFocusPointBehaviour : MonoBehaviour
 {
@@ -7,6 +7,6 @@ public class DynamicFocusPointBehaviour : MonoBehaviour
 
     void Update()
     {
-        HolographicSettings.SetFocusPointForFrame(ObjectToFocus.transform.position, -Camera.main.transform.forward);
+        UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame(ObjectToFocus.transform.position, -Camera.main.transform.forward);
     }
 }

@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.VR.WSA.Input;
+﻿using System;
+using UnityEngine;
+using UnityEngine.XR.WSA.Input;
+
 
 public class HandImprintBehavior : MonoBehaviour
 {
@@ -11,15 +13,15 @@ public class HandImprintBehavior : MonoBehaviour
     void Start()
     {
         _collider = GetComponent<Collider>();
-        InteractionManager.SourceUpdated += InteractionManager_SourceUpdated;
+        InteractionManager.InteractionSourceUpdated += InteractionManager_SourceUpdated;
     }
 
-    private void InteractionManager_SourceUpdated(InteractionSourceState state)
+    private void InteractionManager_SourceUpdated(InteractionSourceUpdatedEventArgs args)
     {
-        if (state.source.kind == InteractionSourceKind.Hand)
+        if (args.state.source.kind == UnityEngine.XR.WSA.Input.InteractionSourceKind.Hand)
         {
             Vector3 handPos;
-            if (state.properties.location.TryGetPosition(out handPos))
+            if (args.state.sourcePose.TryGetPosition(out handPos))
             {
                 if (_collider.bounds.Contains(handPos))
                 {
@@ -49,6 +51,6 @@ public class HandImprintBehavior : MonoBehaviour
 
     private void OnDestroy()
     {
-        InteractionManager.SourceUpdated -= InteractionManager_SourceUpdated;
+        InteractionManager.InteractionSourceUpdated -= InteractionManager_SourceUpdated;
     }
 }

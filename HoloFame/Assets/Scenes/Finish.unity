@@ -177,6 +177,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114057349218136992, guid: 06f1dc6ad7c20234bae5076be3236a5c,
+        type: 2}
+      propertyPath: m_CurrentRenderState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06f1dc6ad7c20234bae5076be3236a5c, type: 2}
   m_IsPrefabParent: 0
@@ -305,7 +310,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.2
+  near clip plane: 0.5
   far clip plane: 10
   field of view: 60
   orthographic: 0
