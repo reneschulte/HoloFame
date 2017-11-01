@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR.WSA.Input;
-
 
 public class HandImprintBehavior : MonoBehaviour
 {

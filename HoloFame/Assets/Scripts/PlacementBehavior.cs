@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using UnityEngine;
-
+using UnityEngine.XR.WSA.Input;
 
 public class PlacementBehavior : MonoBehaviour
 {
-    private UnityEngine.XR.WSA.Input.GestureRecognizer _gestureRecognizer;
+    private GestureRecognizer _gestureRecognizer;
     private Vector3 _previousOffset;
 
     public Camera Camera;
@@ -13,15 +13,15 @@ public class PlacementBehavior : MonoBehaviour
     void Start()
     {
         // Attach gesture handlers
-        _gestureRecognizer = new UnityEngine.XR.WSA.Input.GestureRecognizer();
-        _gestureRecognizer.TappedEvent += GestureRecognizerOnTappedEvent;
-        _gestureRecognizer.NavigationStartedEvent += GestureRecognizerOnNavigationStartedEvent;
-        _gestureRecognizer.NavigationUpdatedEvent += GestureRecognizerOnNavigationUpdatedEvent;
-        _gestureRecognizer.SetRecognizableGestures(UnityEngine.XR.WSA.Input.GestureSettings.Tap | UnityEngine.XR.WSA.Input.GestureSettings.NavigationY);
+        _gestureRecognizer = new GestureRecognizer();
+        _gestureRecognizer.Tapped += GestureRecognizerOnTapped;
+        _gestureRecognizer.NavigationStarted += GestureRecognizerOnNavigationStarted;
+        _gestureRecognizer.NavigationUpdated += GestureRecognizerOnNavigationUpdated;
+        _gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap | GestureSettings.NavigationY);
         _gestureRecognizer.StartCapturingGestures();
     }
 
-    private void GestureRecognizerOnTappedEvent(UnityEngine.XR.WSA.Input.InteractionSourceKind source, int tapCount, Ray headRay)
+    private void GestureRecognizerOnTapped(TappedEventArgs tappedEventArgs)
     {
         IsPlaced = !IsPlaced;
     }
@@ -37,16 +37,15 @@ public class PlacementBehavior : MonoBehaviour
         transform.up = firstHit.normal;
     }
 
-
-
-    private void GestureRecognizerOnNavigationStartedEvent(UnityEngine.XR.WSA.Input.InteractionSourceKind source, Vector3 normalizedOffset, Ray headRay)
+    private void GestureRecognizerOnNavigationStarted(NavigationStartedEventArgs navigationStartedEventArgs)
     {
-        _previousOffset = normalizedOffset;
+        _previousOffset = Vector3.zero;
     }
 
-    private void GestureRecognizerOnNavigationUpdatedEvent(UnityEngine.XR.WSA.Input.InteractionSourceKind source, Vector3 normalizedOffset, Ray headRay)
+    private void GestureRecognizerOnNavigationUpdated(NavigationUpdatedEventArgs navigationUpdatedEventArgs)
     {
-        transform.localPosition += (normalizedOffset - _previousOffset);
+        var normalizedOffset = navigationUpdatedEventArgs.normalizedOffset;
+        transform.localPosition += normalizedOffset - _previousOffset;
         _previousOffset = normalizedOffset;
     }
 
