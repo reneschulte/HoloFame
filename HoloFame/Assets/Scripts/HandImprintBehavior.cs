@@ -16,7 +16,7 @@ public class HandImprintBehavior : MonoBehaviour
 
     private void InteractionManager_SourceUpdated(InteractionSourceUpdatedEventArgs args)
     {
-        if (args.state.source.kind == UnityEngine.XR.WSA.Input.InteractionSourceKind.Hand)
+        if (args.state.source.kind == InteractionSourceKind.Hand)
         {
             Vector3 handPos;
             if (args.state.sourcePose.TryGetPosition(out handPos))
